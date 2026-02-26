@@ -9,6 +9,7 @@
     "prebuild": "expo prebuild",
     "typecheck": "tsc --noEmit",
     "prepare": "simple-git-hooks",
+    "postinstall": "pnpx skills experimental_install",
     "lint": "eslint ."
   },
   "dependencies": {

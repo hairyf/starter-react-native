@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "skills": {
+    "github-cli": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "2572253c1357bef87e91d5ff214807d08b291b5771cf6d2bcee0b7fc7d45c42b"
+    },
+    "github-workflow": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "e72b0ab57924a526d93a8f9c68b25448041a7b56102432530d91beffe572a8fd"
+    },
+    "hairy": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "1c5a80c0415c510fc22d84d6319c34aba4f090b08cb5f488ad0e9377d3ac1aab"
+    },
+    "hairy-react-lib": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "3e46351e0b8cc11ca142d1d2a72a2efde139b6ae1b1a7716cf9aeaab333e7473"
+    },
+    "hairy-utils": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "61eda64684bf238290db54d87b2e86bd85e5dee417424112624374a3ffacdcc7"
+    },
+    "nativewind": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "01b39232f560ba3e926e1f29eb7a4c4e2474f7aa06c453d9542aadcdeb901463"
+    },
+    "pnpm": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "bd8353f601082d30aacb8987d30818e13df4ac0d52bcd6af6c86c1f69f83e264"
+    },
+    "react": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "c24ffe9c59e25ebdd7ad835d1032ec4abda7d0bf6a3c14ca371854e5ce6c2b3e"
+    },
+    "react-native": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "a3a627a7be7f721b4c55835ebebd98f4e4b1f54c2332bf22a6b28b0b56cf4774"
+    },
+    "react-native-expo": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "49fdaaef87e270dd3698e5ac735d73e04b1ce7fc23a29ed63a1522542d555e07"
+    },
+    "react-native-reusables": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "7fa223641178f28561b669042c230aca81a42797014b3c13fa100810afe8819b"
+    },
+    "react-use": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "8d04192c4cb6bdec58c2d96fd836289a76223387dda36f97fd8b4b8887556dbb"
+    },
+    "taze": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "43e012ebb521e3a9507adf04f5869103b9ea37a232b4482687c1a5d51100215e"
+    },
+    "valtio": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "df9939d98d2251d8dc2e3efc6df903a6e9bb274838dceeb5dfd388a622895435"
+    },
+    "valtio-define": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "4c289a9f30b258dcda042359974d3ea79780b9566a53e9ba0b800d27cb0c55e5"
+    }
+  }
+}
