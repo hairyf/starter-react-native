@@ -1,11 +1,11 @@
-import { QueryClientProvider } from "@tanstack/react-query";
-import { queryClient } from "@/config/client";
-import { ThemeProvider } from '@react-navigation/native';
-import { NAV_THEME } from "reusables/lib/theme";
-import { useColorScheme } from "react-native";
+import { ThemeProvider } from '@react-navigation/native'
+import { QueryClientProvider } from '@tanstack/react-query'
+import { useColorScheme } from 'react-native'
+import { NAV_THEME } from 'reusables/lib/theme'
+import { queryClient } from '@/config/client'
 
 export function Provider({ children }: { children: React.ReactNode }) {
-  const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme()
 
   return (
     <QueryClientProvider client={queryClient}>

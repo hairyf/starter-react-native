@@ -1,9 +1,9 @@
 // import { useColorScheme } from "react-native";
-import { Stack } from "expo-router";
-import { StatusBar } from "expo-status-bar";
-import { Provider } from "@/components/provider";
+import { Stack } from 'expo-router'
+import { StatusBar } from 'expo-status-bar'
+import { Provider } from '@/components/provider'
 
-import "../styles.css";
+import '../styles.css'
 
 // This is the main layout of the app
 // It wraps your pages with the providers they need
@@ -13,7 +13,7 @@ export default function RootLayout() {
     <Provider>
       {/*
           The Stack component displays the current page.
-          It also allows you to configure your screens 
+          It also allows you to configure your screens
         */}
       <Stack
         screenOptions={{
@@ -25,5 +25,5 @@ export default function RootLayout() {
       />
       <StatusBar />
     </Provider>
-  );
+  )
 }

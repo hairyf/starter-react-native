@@ -3,7 +3,7 @@ const config = {
   darkMode: 'class',
   content: [
     './src/**/*.{js,ts,tsx}',
-    "./node_modules/reusables/**/*.{js,ts,tsx}",
+    './node_modules/reusables/**/*.{js,ts,tsx}',
   ],
   theme: {
     extend: {
@@ -70,6 +70,6 @@ const config = {
   future: {
     hoverOnlyWhenSupported: true,
   },
-};
+}
 
-module.exports = config;
+module.exports = config

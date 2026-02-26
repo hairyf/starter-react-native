@@ -1,11 +1,12 @@
 {
   "name": "reusables",
-  "main": "index.ts",
   "version": "1.0.0",
+  "private": true,
   "exports": {
     ".": "./index.ts",
     "./theme": "./theme.css"
   },
+  "main": "index.ts",
   "dependencies": {
     "@react-navigation/native": "^7.0.0",
     "@rn-primitives/portal": "~1.3.0",
@@ -15,6 +16,5 @@
     "lucide-react-native": "^0.545.0",
     "tailwind-merge": "^3.3.1",
     "tailwindcss-animate": "^1.0.7"
-  },
-  "private": true
+  }
 }

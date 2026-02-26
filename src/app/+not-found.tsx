@@ -1,5 +1,5 @@
-import { Link, Stack } from 'expo-router';
-import { Text, View } from 'react-native';
+import { Link, Stack } from 'expo-router'
+import { Text, View } from 'react-native'
 
 export default function NotFoundScreen() {
   return (
@@ -13,5 +13,5 @@ export default function NotFoundScreen() {
         </Link>
       </View>
     </>
-  );
+  )
 }
