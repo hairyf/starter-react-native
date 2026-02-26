@@ -1,0 +1,8 @@
+{
+  "files.exclude": {
+    ".expo": true,
+    "nativewind-env.d.ts": true,
+    "expo-env.d.ts": true,
+    "postcss.config.mjs": true
+  }
+}

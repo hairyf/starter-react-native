@@ -1,0 +1,9 @@
+@import "tailwindcss/theme.css";
+@import "tailwindcss/preflight.css";
+@import "tailwindcss/utilities.css";
+@plugin "tailwindcss-animate";
+
+@import "nativewind/theme";
+@import "reusables/theme";
+
+@config "../tailwind.config.js";
