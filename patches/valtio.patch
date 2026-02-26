@@ -1,0 +1,80 @@
+diff --git a/esm/react.mjs b/esm/react.mjs
+index aa8fc447630395b37d1107c2b55a5973dad5eed1..c6717be0d3659a7163d0d6c0d5f1ff6f2124bc73 100644
+--- a/esm/react.mjs
++++ b/esm/react.mjs
+@@ -52,7 +52,7 @@ function useSnapshot(proxyObject, options) {
+   useLayoutEffect(() => {
+     lastSnapshot.current = currSnapshot;
+   });
+-  if ((import.meta.env ? import.meta.env.MODE : void 0) !== "production") {
++  if ((process.env.NODE_ENV !== "production")) {
+     condUseAffectedDebugValue(currSnapshot, affected);
+   }
+   const proxyCache = useMemo(() => /* @__PURE__ */ new WeakMap(), []);
+diff --git a/esm/vanilla/utils.mjs b/esm/vanilla/utils.mjs
+index 5c165565dbe769ad2966f91b42080bf0e962251b..c34c73c6cd32dfc2439ff65b520416787421a5f4 100644
+--- a/esm/vanilla/utils.mjs
++++ b/esm/vanilla/utils.mjs
+@@ -17,7 +17,7 @@ function subscribeKey(proxyObject, key, callback, notifyInSync) {
+ let currentCleanups;
+ let didWarnDeprecation = false;
+ function watch(callback, options) {
+-  if ((import.meta.env ? import.meta.env.MODE : void 0) !== "production" && !didWarnDeprecation) {
++  if ((process.env.NODE_ENV !== "production") && !didWarnDeprecation) {
+     console.warn(
+       "[DEPRECATED] The `watch` util is no longer maintained. Please migrate to [valtio-reactive](https://github.com/valtiojs/valtio-reactive)."
+     );
+@@ -83,11 +83,11 @@ function devtools(proxyObject, options) {
+   const { enabled, name = "", ...rest } = options || {};
+   let extension;
+   try {
+-    extension = (enabled != null ? enabled : (import.meta.env ? import.meta.env.MODE : void 0) !== "production") && window.__REDUX_DEVTOOLS_EXTENSION__;
++    extension = (enabled != null ? enabled : (process.env.NODE_ENV !== "production")) && window.__REDUX_DEVTOOLS_EXTENSION__;
+   } catch (e) {
+   }
+   if (!extension) {
+-    if ((import.meta.env ? import.meta.env.MODE : void 0) !== "production" && enabled) {
++    if ((process.env.NODE_ENV !== "production") && enabled) {
+       console.warn("[Warning] Please install/enable Redux devtools extension");
+     }
+     return;
+diff --git a/esm/vanilla.mjs b/esm/vanilla.mjs
+index 6c0ffe4ee5b46ac19e369b5a00fc98927def5f0b..84ad8a38491360f0c5d56fe8735ef05b7eee597c 100644
+--- a/esm/vanilla.mjs
++++ b/esm/vanilla.mjs
+@@ -118,7 +118,7 @@ function proxy(baseObject = {}) {
+   const addPropListener = (prop, propValue) => {
+     const propProxyState = !refSet.has(propValue) && proxyStateMap.get(propValue);
+     if (propProxyState) {
+-      if ((import.meta.env ? import.meta.env.MODE : void 0) !== "production" && propProxyStates.has(prop)) {
++      if ((process.env.NODE_ENV !== "production") && propProxyStates.has(prop)) {
+         throw new Error("prop listener already exists");
+       }
+       if (listeners.size) {
+@@ -141,7 +141,7 @@ function proxy(baseObject = {}) {
+     listeners.add(listener);
+     if (listeners.size === 1) {
+       propProxyStates.forEach(([propProxyState, prevRemove], prop) => {
+-        if ((import.meta.env ? import.meta.env.MODE : void 0) !== "production" && prevRemove) {
++        if ((process.env.NODE_ENV !== "production") && prevRemove) {
+           throw new Error("remove already exists");
+         }
+         const remove = propProxyState[2](createPropListener(prop));
+@@ -190,7 +190,7 @@ function getVersion(proxyObject) {
+ }
+ function subscribe(proxyObject, callback, notifyInSync) {
+   const proxyState = proxyStateMap.get(proxyObject);
+-  if ((import.meta.env ? import.meta.env.MODE : void 0) !== "production" && !proxyState) {
++  if ((process.env.NODE_ENV !== "production") && !proxyState) {
+     console.warn("Please use proxy object");
+   }
+   let promise;
+@@ -223,7 +223,7 @@ function subscribe(proxyObject, callback, notifyInSync) {
+ }
+ function snapshot(proxyObject) {
+   const proxyState = proxyStateMap.get(proxyObject);
+-  if ((import.meta.env ? import.meta.env.MODE : void 0) !== "production" && !proxyState) {
++  if ((process.env.NODE_ENV !== "production") && !proxyState) {
+     console.warn("Please use proxy object");
+   }
+   const [target, ensureVersion] = proxyState;

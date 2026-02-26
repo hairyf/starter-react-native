@@ -16,7 +16,9 @@
     "react": "19.1.4",
     "react-dom": "19.1.4",
     "react-use": "^17.6.0",
-    "reusables": "workspace:*"
+    "reusables": "workspace:*",
+    "valtio": "^2.3.0",
+    "valtio-define": "^1.0.4"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^7.6.1",

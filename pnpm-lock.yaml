@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  valtio:
+    hash: 56822545fa241f4380b9da7edf2441961f8215c05c07b396dfb22734b2fa163b
+    path: patches/valtio.patch
+
 importers:
 
   .:
@@ -29,6 +34,12 @@ importers:
       reusables:
         specifier: workspace:*
         version: link:reusables
+      valtio:
+        specifier: ^2.3.0
+        version: 2.3.0(patch_hash=56822545fa241f4380b9da7edf2441961f8215c05c07b396dfb22734b2fa163b)(@types/react@19.1.17)(react@19.1.4)
+      valtio-define:
+        specifier: ^1.0.4
+        version: 1.0.4(@types/react@19.1.17)(react@19.1.4)
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^7.6.1
@@ -2406,6 +2417,9 @@ packages:
     resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
     engines: {node: '>=6'}
 
+  destr@2.0.5:
+    resolution: {integrity: sha512-ugFTXCtDZunbzasqBxrK93Ik/DRYsO6S/fedkWEMKqt04xZ4csmnmwGDBAb07QWNaGMAmnTIemsYZCksjATwsA==}
+
   destroy@1.2.0:
     resolution: {integrity: sha512-2sJGJTaXIIaR1w4iJSNoN0hnMY7Gpc/n8D4qSCJw8QqFWXf7cuAgnEHxBpweaVcPevC2l3KpjYCx3NypQQgaJg==}
     engines: {node: '>= 0.8', npm: 1.2.8000 || >= 1.4.16}
@@ -4762,6 +4776,9 @@ packages:
     resolution: {integrity: sha512-4gB8na07fecVVkOI6Rs4e7T6NOTki5EmL7TUduTs6bu3EdnSycntVJ4re8kgZA+wx9IueI2Y11bfbgwtzuE0KQ==}
     engines: {node: '>=0.10.0'}
 
+  structure-id@1.2.9:
+    resolution: {integrity: sha512-JXpm4DZLQqcioH+wooEc3jCFRlwu/pJvemuuNUv37gOWTVzdYgw1khGWPYulMxdkK7rlsi0pIc5gDFTw+pF8+A==}
+
   structured-headers@0.4.1:
     resolution: {integrity: sha512-0MP/Cxx5SzeeZ10p/bZI0S6MpgD+yxAhi1BOQ34jgnMXsCq3j1t6tQnZu+KdlL7dvJTLT3g9xN8tl10TqgFMcg==}
 
@@ -5032,6 +5049,11 @@ packages:
   validate-npm-package-name@5.0.1:
     resolution: {integrity: sha512-OljLrQ9SQdOUqTaQxqL5dEfZWrXExyyWsozYlAWFawPVNuD83igl7uJD2RTkNMbniIYgt8l81eCJGIdQF7avLQ==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
+
+  valtio-define@1.0.4:
+    resolution: {integrity: sha512-pbE0srgbhxAWuIVkRunjuS9pXsRUw7nRlkwRELp5kWNg/p7KzkAA98x3ANGLL7hGsKD9JSLcJOAK0kaCaxFenw==}
+    peerDependencies:
+      react: ^18.2.0
 
   valtio@2.3.0:
     resolution: {integrity: sha512-1MfKNcmOIdBSatiJsYgw420n6jnD+jeoI0V+RkOQbCB0ElLh6GKUfPr0hc9uq/KBGeghivDEarRsKFFdSQQnKw==}
@@ -6384,7 +6406,7 @@ snapshots:
       react: 19.1.4
       react-dom: 19.1.4(react@19.1.4)
       react-i18next: 14.1.3(i18next@25.8.13(typescript@5.9.3))(react-dom@19.1.4(react@19.1.4))(react-native@0.81.6(@babel/core@7.29.0)(@types/react@19.1.17)(react@19.1.4))(react@19.1.4)
-      valtio: 2.3.0(@types/react@19.1.17)(react@19.1.4)
+      valtio: 2.3.0(patch_hash=56822545fa241f4380b9da7edf2441961f8215c05c07b396dfb22734b2fa163b)(@types/react@19.1.17)(react@19.1.4)
     transitivePeerDependencies:
       - '@types/react'
 
@@ -7878,6 +7900,8 @@ snapshots:
   depd@2.0.0: {}
 
   dequal@2.0.3: {}
+
+  destr@2.0.5: {}
 
   destroy@1.2.0: {}
 
@@ -10769,6 +10793,8 @@ snapshots:
 
   strip-json-comments@2.0.1: {}
 
+  structure-id@1.2.9: {}
+
   structured-headers@0.4.1: {}
 
   styleq@0.1.3: {}
@@ -11000,7 +11026,17 @@ snapshots:
 
   validate-npm-package-name@5.0.1: {}
 
-  valtio@2.3.0(@types/react@19.1.17)(react@19.1.4):
+  valtio-define@1.0.4(@types/react@19.1.17)(react@19.1.4):
+    dependencies:
+      '@hairy/utils': 1.47.0
+      destr: 2.0.5
+      react: 19.1.4
+      structure-id: 1.2.9
+      valtio: 2.3.0(patch_hash=56822545fa241f4380b9da7edf2441961f8215c05c07b396dfb22734b2fa163b)(@types/react@19.1.17)(react@19.1.4)
+    transitivePeerDependencies:
+      - '@types/react'
+
+  valtio@2.3.0(patch_hash=56822545fa241f4380b9da7edf2441961f8215c05c07b396dfb22734b2fa163b)(@types/react@19.1.17)(react@19.1.4):
     dependencies:
       proxy-compare: 3.0.1
     optionalDependencies:

@@ -1,6 +1,9 @@
+packages:
+  - reusables
+
+patchedDependencies:
+  valtio: patches/valtio.patch
+
 shellEmulator: true
 
 trustPolicy: no-downgrade
-
-packages:
-  - reusables
