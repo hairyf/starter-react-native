@@ -1,24 +1,22 @@
-import { cn } from '#/lib/utils';
-import type { LucideIcon, LucideProps } from 'lucide-react-native';
-import { cssInterop } from 'react-native-css-interop';
+import type { SvgProps } from 'react-native-svg'
+import { cn } from '#/lib/utils'
+import { cssInterop } from 'react-native-css-interop'
 
-type IconProps = LucideProps & {
-  as: LucideIcon;
-};
+type IconProps = SvgProps & {
+  as: React.ComponentType<SvgProps>
+  size?: number
+}
 
 function IconImpl({ as: IconComponent, ...props }: IconProps) {
-  return <IconComponent {...props} />;
+  return <IconComponent {...props} />
 }
 
 cssInterop(IconImpl, {
   className: {
+    nativeStyleToProp: { height: 'size', width: 'size' },
     target: 'style',
-    nativeStyleToProp: {
-      height: 'size',
-      width: 'size',
-    },
   },
-});
+})
 
 /**
  * A wrapper component for Lucide icons with Nativewind `className` support via `cssInterop`.
@@ -35,10 +33,10 @@ cssInterop(IconImpl, {
  * <Icon as={ArrowRight} className="text-red-500" size={16} />
  * ```
  *
- * @param {LucideIcon} as - The Lucide icon component to render.
- * @param {string} className - Utility classes to style the icon using Nativewind.
- * @param {number} size - Icon size (defaults to 14).
- * @param {...LucideProps} ...props - Additional Lucide icon props passed to the "as" icon.
+ * @param {IconProps} props - Icon component props.
+ * @param {React.ComponentType<SvgProps>} props.as - The SVG icon component to render.
+ * @param {string} [props.className] - Utility classes to style the icon using Nativewind.
+ * @param {number} [props.size] - Icon size (defaults to 14).
  */
 function Icon({ as: IconComponent, className, size = 14, ...props }: IconProps) {
   return (
@@ -48,7 +46,7 @@ function Icon({ as: IconComponent, className, size = 14, ...props }: IconProps) 
       size={size}
       {...props}
     />
-  );
+  )
 }
 
-export { Icon };
+export { Icon }

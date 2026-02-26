@@ -1,10 +1,21 @@
 shellEmulator: true
 
-trustPolicy: no-downgrade
 packages:
   - reusables
 patchedDependencies:
   valtio: patches/valtio.patch
 
+allowedDeprecatedVersions:
+  glob: '*'
+  inflight: '*'
+  rimraf: '*'
+
 onlyBuiltDependencies:
   - simple-git-hooks
+
+peerDependencyRules:
+  allowedVersions:
+    eslint: ^10.0.0
+    react: ^19.0.0
+    react-dom: ^19.0.0
+    tailwindcss: ^4.0.0

@@ -16,6 +16,8 @@
     "@tanstack/react-query": "^5.90.21",
     "react": "19.1.4",
     "react-dom": "19.1.4",
+    "react-native-css-interop": "^0.2.2",
+    "react-native-svg": "^15.15.3",
     "react-use": "^17.6.0",
     "reusables": "workspace:*",
     "valtio": "^2.3.0",
