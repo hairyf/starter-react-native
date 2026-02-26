@@ -7,6 +7,7 @@
     "dev:web": "expo start --web",
     "prebuild": "expo prebuild",
     "typecheck": "tsc --noEmit",
+    "prepare": "simple-git-hooks",
     "lint": "eslint ."
   },
   "dependencies": {
