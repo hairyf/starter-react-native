@@ -1,29 +1,26 @@
-// import { useColorScheme } from "react-native";
+import { ThemeProvider } from '@react-navigation/native'
+import { PortalHost } from '@rn-primitives/portal'
+
 import { Stack } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
-import { Provider } from '@/components/provider'
+import { NAV_THEME, useTheme } from 'reusables'
 
-import '../styles.css'
+import 'reusables/theme'
+import '@/style/index.css'
 
-// This is the main layout of the app
-// It wraps your pages with the providers they need
+export {
+  // Catch any errors thrown by the Layout component.
+  ErrorBoundary,
+} from 'expo-router'
+
 export default function RootLayout() {
-  // const colorScheme = useColorScheme();
+  const { theme } = useTheme()
+
   return (
-    <Provider>
-      {/*
-          The Stack component displays the current page.
-          It also allows you to configure your screens
-        */}
-      <Stack
-        screenOptions={{
-          headerShown: false,
-          contentStyle: {
-            // backgroundColor: colorScheme == "dark" ? "#09090B" : "#FFFFFF",
-          },
-        }}
-      />
-      <StatusBar />
-    </Provider>
+    <ThemeProvider value={NAV_THEME[theme ?? 'light']}>
+      <StatusBar style={theme === 'dark' ? 'light' : 'dark'} />
+      <Stack />
+      <PortalHost />
+    </ThemeProvider>
   )
 }

@@ -2,59 +2,41 @@ import type { ConfigContext, ExpoConfig } from 'expo/config'
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
-  name: 'expo',
-  slug: 'expo',
-  scheme: 'expo',
-  version: '0.1.0',
+  name: 'minimal',
+  slug: 'minimal',
+  version: '1.0.0',
   orientation: 'portrait',
-  icon: './public/icon-light.png',
+  icon: './src/public/images/icon.png',
+  scheme: 'minimal',
   userInterfaceStyle: 'automatic',
-  updates: {
-    fallbackToCacheTimeout: 0,
-  },
   newArchEnabled: true,
-  assetBundlePatterns: ['**/*'],
+  splash: {
+    image: './public/images/splash.png',
+    resizeMode: 'contain',
+    backgroundColor: '#ffffff',
+  },
+  assetBundlePatterns: [
+    '**/*',
+  ],
   ios: {
-    bundleIdentifier: 'your.bundle.identifier',
     supportsTablet: true,
-    icon: {
-      light: './public/icon-light.png',
-      dark: './public/icon-dark.png',
-    },
   },
   android: {
-    package: 'your.bundle.identifier',
-    adaptiveIcon: {
-      foregroundImage: './public/icon-light.png',
-      backgroundColor: '#1F104A',
-    },
     edgeToEdgeEnabled: true,
+    adaptiveIcon: {
+      foregroundImage: './public/images/adaptive-icon.png',
+      backgroundColor: '#ffffff',
+    },
   },
-  // extra: {
-  //   eas: {
-  //     projectId: "your-eas-project-id",
-  //   },
-  // },
-  experiments: {
-    tsconfigPaths: true,
-    typedRoutes: true,
-    reactCanary: true,
-    reactCompiler: true,
+  web: {
+    bundler: 'metro',
+    output: 'static',
+    favicon: './public/images/favicon.png',
   },
   plugins: [
     'expo-router',
-    'expo-secure-store',
-    'expo-web-browser',
-    [
-      'expo-splash-screen',
-      {
-        backgroundColor: '#E4E4E7',
-        image: './public/icon-light.png',
-        dark: {
-          backgroundColor: '#18181B',
-          image: './public/icon-dark.png',
-        },
-      },
-    ],
   ],
+  experiments: {
+    typedRoutes: true,
+  },
 })

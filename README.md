@@ -1,57 +1,56 @@
-# Starter React Native (Expo + Router + NativeWind)
+# React Native Reusables Uniwind Starter
 
-An opinionated React Native starter template built with Expo 54 + Expo Router 6. It includes NativeWind 4, React Query, Valtio, ESLint, and a pnpm workspace (`reusables` package) to help you quickly bootstrap a scalable cross-platform app (iOS / Android / Web).
+An opinionated React Native starter built with Expo 54 + Expo Router 6, Uniwind (Tailwind CSS v4), and the `reusables` UI package. It is designed as a minimal but scalable foundation for building cross‑platform apps (iOS / Android / Web) with React Native Reusables.
 
 ## Features
 
-- ⚡️ Expo 54 + React Native 0.81 + React 19
-- 🧭 File-based routing with Expo Router (including typed routes)
-- 🎨 NativeWind + Tailwind CSS v4 (with `reusables` theme and components)
-- 📦 pnpm workspace (main app + shared `reusables` UI package)
-- 🔄 TanStack Query (data fetching and caching)
-- 🗂️ Valtio + `valtio-define` (lightweight state management)
-- ✅ TypeScript strict mode + `@antfu/eslint-config`
-- 🤖 GitHub Actions CI (`lint` + `typecheck`)
-- 🧪 EAS build profiles (`development` / `preview` / `production`)
+- ⚡️ **Modern stack**: Expo 54, React Native 0.81, React 19
+- 🧭 **File‑based routing** with Expo Router (typed routes enabled)
+- 🎨 **Styling** via Uniwind + Tailwind CSS v4 (dark mode ready)
+- 📦 **Shared UI package**: `reusables` workspace with shadcn‑style components
+- 🔄 **Data fetching** ready with `@tanstack/react-query`
+- 🗂️ **State management** ready with `valtio` + `valtio-define`
+- ✅ **TypeScript strict** + `@antfu/eslint-config`
+- 🧩 **Theming** and navigation integrated via `NAV_THEME` and a `ThemeToggle` header action
+- 📱 Runs on **iOS, Android, and Web**
 
 ## Tech Stack
 
-| Area               | Solution                   |
-| ------------------ | -------------------------- |
-| App framework      | Expo, React Native         |
-| Routing            | expo-router                |
-| Styling            | nativewind, tailwindcss v4 |
-| Data fetching      | @tanstack/react-query      |
-| State management   | valtio, valtio-define      |
-| Code quality       | TypeScript, ESLint         |
-| Package management | pnpm workspace             |
-| Build & release    | EAS                        |
+| Area               | Solution                             |
+| ------------------ | ------------------------------------ |
+| App framework      | Expo, React Native                   |
+| Routing            | `expo-router`                        |
+| Styling            | `uniwind`, `tailwindcss` v4          |
+| UI components      | React Native Reusables (`reusables`) |
+| Data fetching      | `@tanstack/react-query`              |
+| State management   | `valtio`, `valtio-define`            |
+| Code quality       | TypeScript, ESLint                   |
+| Package management | pnpm workspace (`reusables`)         |
 
 ## Project Structure
 
 ```txt
 .
 ├─ src/
-│  ├─ app/                 # Route pages (Expo Router)
-│  ├─ components/          # App-level components and Provider
-│  ├─ config/              # Runtime config (e.g. QueryClient)
-│  └─ store/               # State management
-├─ reusables/              # Shared UI components and theme (workspace package)
-├─ patches/                # pnpm patchedDependencies (e.g. valtio patch)
-├─ app.config.ts           # Expo config
-├─ tailwind.config.js      # Tailwind / NativeWind config
-├─ metro.config.js         # Metro + NativeWind
-├─ eas.json                # EAS build profiles
-└─ pnpm-workspace.yaml     # Monorepo workspace
+│  ├─ app/                 # Expo Router routes (+html, _layout, index)
+│  ├─ layout/              # Shared layout + ThemeToggle
+│  └─ components/          # App-level components (e.g. icons)
+├─ reusables/              # Shared UI library (buttons, text, icons, theme)
+├─ types/                  # Generated Uniwind type definitions
+├─ app.config.ts           # Expo app config (new architecture + edge-to-edge)
+├─ metro.config.js         # Metro config with Uniwind integration
+├─ tailwind.config.js      # Tailwind / NativeWind content config
+├─ pnpm-workspace.yaml     # pnpm workspace configuration
+└─ package.json            # Scripts and root dependencies
 ```
 
 ## Quick Start
 
 ### 1) Prerequisites
 
-- Node.js `>=22` (recommended to match `eas.json`)
+- Node.js `>=22` (recommended)
 - pnpm `>=10`
-- iOS / Android simulator (optional)
+- iOS / Android simulator (optional, for running locally)
 
 ### 2) Install dependencies
 
@@ -59,54 +58,59 @@ An opinionated React Native starter template built with Expo 54 + Expo Router 6.
 pnpm install
 ```
 
-### 3) Start development server
+### 3) Start the development server
 
 ```bash
 pnpm dev
 ```
 
-Run on specific platforms:
+This will start the Expo Dev Server. You can then:
 
-```bash
-pnpm dev:android
-pnpm dev:ios
-pnpm dev:web
-```
+- **iOS**: press `i` to launch the iOS simulator _(macOS only)_
+- **Android**: press `a` to launch the Android emulator
+- **Web**: press `w` to run in a browser
+
+You can also scan the QR code using the [Expo Go](https://expo.dev/go) app on your device. This project fully supports running in Expo Go for quick testing on physical devices.
 
 ## Available Scripts
 
+From the project root:
+
 ```bash
-pnpm dev           # Start Expo dev server
-pnpm dev:android   # Start and open Android
-pnpm dev:ios       # Start and open iOS
-pnpm dev:web       # Start Web
-pnpm prebuild      # Generate native projects
+pnpm dev           # Start Expo dev server (all platforms)
+pnpm dev:android   # Start dev server and open Android
+pnpm dev:ios       # Start dev server and open iOS
+pnpm dev:web       # Start dev server and open Web
+pnpm prebuild      # Generate native iOS/Android projects
 pnpm typecheck     # Run TypeScript type checks
 pnpm lint          # Run ESLint
+pnpm clean         # Remove .expo and node_modules
+pnpm reusables     # Manage the reusables workspace UI library
 ```
 
-## Development Conventions
+## Working with the `reusables` Package
 
-- Pre-commit hooks: `simple-git-hooks` + `lint-staged` (runs `eslint --fix`)
-- Path aliases:
-  - `@/*` -> `src/*`
-  - `#/*` -> `reusables/*`
-- ESLint ignores `reusables/**` by default (you can lint it separately if needed)
+The shared UI library lives in the `reusables` workspace package. To run its maintenance / generation scripts from the project root:
 
-## Setup Checklist (Recommended)
+```bash
+pnpm reusables
+pnpm reusables add
+pnpm reusables add  [...components]
+```
 
-- Update values in `app.config.ts`:
-  - `name` / `slug` / `scheme`
-  - iOS `bundleIdentifier`
-  - Android `package`
-- Replace app icon and splash assets (currently `public/icon-light.png` and `public/icon-dark.png`)
-- If you plan to release via EAS, fill `extra.eas.projectId` in `app.config.ts`
+## Learn More
 
-## CI
+To dive deeper into the technologies used:
 
-Pushes and PRs to `main` automatically run:
+- [React Native Docs](https://reactnative.dev/docs/getting-started)
+- [Expo Docs](https://docs.expo.dev/)
+- [Uniwind Docs](https://docs.uniwind.dev/)
+- [React Native Reusables](https://reactnativereusables.com)
 
-- `lint`
-- `typecheck`
+## Deploy with EAS
 
-Workflow file: `.github/workflows/ci.yml`
+The easiest way to deploy your app is with [Expo Application Services (EAS)](https://expo.dev/eas).
+
+- [EAS Build](https://docs.expo.dev/build/introduction/)
+- [EAS Updates](https://docs.expo.dev/eas-update/introduction/)
+- [EAS Submit](https://docs.expo.dev/submit/introduction/)

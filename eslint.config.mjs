@@ -6,6 +6,7 @@ export default antfu({
   type: 'app',
   rules: {
     'pnpm/yaml-enforce-settings': 'off',
+    'ts/no-require-imports': 'off',
   },
   ignores: [
     'reusables/**',

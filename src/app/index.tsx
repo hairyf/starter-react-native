@@ -1,48 +1,47 @@
-import { useQuery } from '@tanstack/react-query'
 import { Link } from 'expo-router'
-import { View } from 'react-native'
-import { Button, Text } from 'reusables'
-import { useStore } from 'valtio-define'
-import { Icon } from '@/components/icon'
-import { Rating } from '@/components/icons'
-import { store } from '@/store'
+import { StarIcon } from 'lucide-react-native'
+import { Image, View } from 'react-native'
+import { Button, Icon, Text, useTheme } from 'reusables'
+import { layouts } from '@/layout'
 
-function Page() {
-  const { data } = useQuery({
-    queryKey: ['hello'],
-    queryFn: async () => {
-      const response = await fetch('https://jsonplaceholder.typicode.com/posts')
-      const data = await response.json() as any[]
-      return data
-    },
-  })
-
-  const { count, increment } = useStore(store.user)
-  return (
-    <View className="gap-2">
-      <View className="items-center justify-center bg-white p-4 flex-row gap-2">
-        <Text className="text-xl font-bold text-blue-500">
-          Welcome to Nativewind!
-        </Text>
-      </View>
-      <View className="flex-col items-center gap-2 px-2">
-        <View className="flex-row items-center gap-2">
-          <Icon as={Rating} size={16} className="text-yellow-500" />
-          <Text>{count}</Text>
-        </View>
-        <Button onPress={increment}>
-          <Text>Star</Text>
-        </Button>
-      </View>
-      <View className="flex-col gap-2 px-2">
-        {data?.map(post => (
-          <Link key={post.id} href={{ pathname: '/post/[id]', params: { id: String(post.id) } }} asChild>
-            <Text className="text-left">{post.title}</Text>
-          </Link>
-        ))}
-      </View>
-    </View>
-  )
+const LOGO = {
+  light: require('@/assets/react-native-reusables-light.png'),
+  dark: require('@/assets/react-native-reusables-dark.png'),
 }
 
-export default Page
+export default function Screen() {
+  const { theme } = useTheme()
+
+  return (
+    <layouts.default>
+      <View className="flex-1 items-center justify-center gap-8 p-4">
+        <Image source={LOGO[theme]} style={{ height: 76, width: 76 }} resizeMode="contain" />
+        <View className="gap-2 p-4">
+          <Text className="ios:text-foreground text-muted-foreground font-mono text-sm">
+            1. Edit
+            {' '}
+            <Text variant="code">app/index.tsx</Text>
+            {' '}
+            to get started.
+          </Text>
+          <Text className="ios:text-foreground text-muted-foreground font-mono text-sm">
+            2. Save to see your changes instantly.
+          </Text>
+        </View>
+        <View className="flex-row gap-2">
+          <Link href="https://reactnativereusables.com" asChild>
+            <Button>
+              <Text>Browse the Docs</Text>
+            </Button>
+          </Link>
+          <Link href="https://github.com/founded-labs/react-native-reusables" asChild>
+            <Button variant="ghost">
+              <Text>Star the Repo</Text>
+              <Icon as={StarIcon} />
+            </Button>
+          </Link>
+        </View>
+      </View>
+    </layouts.default>
+  )
+}
