@@ -35,7 +35,16 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     favicon: './public/favicon.png',
   },
   plugins: [
-    'expo-router',
+    [
+      'expo-router',
+      {
+        headers: {
+          'Cross-Origin-Embedder-Policy': 'credentialless',
+          'Cross-Origin-Opener-Policy': 'same-origin',
+        },
+      },
+    ],
+    'expo-sqlite',
   ],
   experiments: {
     typedRoutes: true,

@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "bradlc.vscode-tailwindcss",
+    "antfu.goto-alias",
+    "dbaeumer.vscode-eslint",
+    "antfu.pnpm-catalog-lens"
+  ]
+}

@@ -28,6 +28,7 @@ catalogs:
     expo-linking: ~8.0.10
     expo-router: ~6.0.19
     expo-splash-screen: ~31.0.12
+    expo-sqlite: ~16.0.10
     expo-status-bar: ~3.0.9
     expo-system-ui: ~6.0.9
     expo-updates: ~29.0.15
@@ -59,6 +60,12 @@ catalogs:
     lucide-react-native: ^0.545.0
     react-native-svg: 15.12.1
     tailwind-merge: ^3.3.1
+  sql:
+    kysely: ^0.28.11
+    kysely-dialect-expo: ^0.1.0
+    kysely-model: ^0.1.0
+    prisma: ^7.3.0
+    prisma-kysely: ^3.0.0
   types:
     '@types/cross-spawn': ^6.0.6
     '@types/react': ~19.1.10

@@ -8,6 +8,9 @@
       ],
       "#/*": [
         "reusables/*"
+      ],
+      "prisma/*": [
+        "prisma/*"
       ]
     },
     "strict": true

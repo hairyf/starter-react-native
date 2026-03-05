@@ -1,0 +1,29 @@
+datasource db {
+  provider = "sqlite"
+}
+
+generator kysely {
+  provider = "prisma-kysely"
+  output   = "../../src/database"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("user")
+}
+
+model Post {
+  id      String   @id
+  title     String
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("post")
+}
