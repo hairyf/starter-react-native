@@ -32,7 +32,7 @@
     "reusables": "workspace:*",
     "unstorage": "^1.17.4",
     "valtio": "^2.3.0",
-    "valtio-define": "^1.1.1"
+    "valtio-define": "^1.1.2"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^7.6.1",
