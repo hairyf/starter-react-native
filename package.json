@@ -14,10 +14,8 @@
     "typecheck": "tsc --noEmit",
     "prepare": "simple-git-hooks",
     "postinstall": "pnpx skills experimental_install",
-
     "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev",
-
+    "prisma:migrate": "prisma migrate dev && tsx scripts/migrations.ts",
     "lint": "eslint .",
     "clean": "rm -rf .expo node_modules",
     "android": "expo run:android",
@@ -31,6 +29,7 @@
     "expo-sqlite": "catalog:expo",
     "kysely": "catalog:sql",
     "kysely-dialect-expo": "catalog:sql",
+    "kysely-migrate-sql": "catalog:sql",
     "kysely-model": "catalog:sql",
     "react": "catalog:frontend",
     "react-dom": "catalog:frontend",
@@ -47,6 +46,7 @@
     "@antfu/eslint-config": "catalog:cli",
     "@eslint-react/eslint-plugin": "catalog:cli",
     "@types/react": "catalog:types",
+    "babel-plugin-inline-import": "catalog:build",
     "eslint": "catalog:cli",
     "eslint-plugin-format": "catalog:cli",
     "eslint-plugin-react-hooks": "catalog:cli",
@@ -71,8 +71,14 @@
     "react-native-worklets": "catalog:native",
     "simple-git-hooks": "catalog:cli",
     "tailwindcss": "catalog:build",
+    "tsx": "catalog:cli",
     "typescript": "catalog:dev",
     "uniwind": "catalog:build"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "valtio@2.3.0": "patches/valtio@2.3.0.patch"
+    }
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"

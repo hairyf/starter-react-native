@@ -1,8 +1,9 @@
 import type { DB } from './types'
-import SQLite from 'expo-sqlite'
+import * as SQLite from 'expo-sqlite'
 import { Kysely } from 'kysely'
 import { ExpoSqliteDialect } from 'kysely-dialect-expo'
 import { SqlMigrator } from 'kysely-migrate-sql'
+import migrations from './migrations'
 import { Post } from './models/post'
 import { User } from './models/user'
 
@@ -16,7 +17,5 @@ export const db = Object.assign(connection, {
 })
 
 export const migrator = new SqlMigrator(db, {
-  migrations: {
-    20260305080528: require('prisma/migrations/20260305080528/migration.sql'),
-  },
+  migrations,
 })

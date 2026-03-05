@@ -1,5 +1,4 @@
 import { Stack } from 'expo-router'
-
 import { Provider } from '@/components/provider'
 import 'reusables/theme'
 import '@/style/index.css'
