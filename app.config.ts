@@ -6,12 +6,12 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   slug: 'minimal',
   version: '1.0.0',
   orientation: 'portrait',
-  icon: './src/assets/images/icon.png',
+  icon: './public/icon.png',
   scheme: 'minimal',
   userInterfaceStyle: 'automatic',
   newArchEnabled: true,
   splash: {
-    image: './assets/images/splash.png',
+    image: './public/splash.png',
     resizeMode: 'contain',
     backgroundColor: '#ffffff',
   },
@@ -23,15 +23,16 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   android: {
     edgeToEdgeEnabled: true,
+    package: 'com.anonymous.minimal',
     adaptiveIcon: {
-      foregroundImage: './assets/images/adaptive-icon.png',
+      foregroundImage: './public/adaptive-icon.png',
       backgroundColor: '#ffffff',
     },
   },
   web: {
     bundler: 'metro',
     output: 'static',
-    favicon: './assets/images/favicon.png',
+    favicon: './public/favicon.png',
   },
   plugins: [
     'expo-router',

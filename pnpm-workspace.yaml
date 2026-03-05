@@ -1,6 +1,8 @@
 shellEmulator: true
-
 packages:
   - reusables
+
 patchedDependencies:
   valtio: patches/valtio.patch
+onlyBuiltDependencies:
+  - simple-git-hooks

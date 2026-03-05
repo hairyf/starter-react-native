@@ -1,7 +1,6 @@
 import { Link } from 'expo-router'
-import { StarIcon } from 'lucide-react-native'
 import { Image, View } from 'react-native'
-import { Button, Icon, Text, useTheme } from 'reusables'
+import { ArrowRightIcon, Button, Icon, Text, useTheme } from 'reusables'
 import { layouts } from '@/layout'
 
 const LOGO = {
@@ -30,14 +29,14 @@ export default function Screen() {
         </View>
         <View className="flex-row gap-2">
           <Link href="https://reactnativereusables.com" asChild>
-            <Button>
+            <Button size="sm">
               <Text>Browse the Docs</Text>
             </Button>
           </Link>
-          <Link href="https://github.com/founded-labs/react-native-reusables" asChild>
-            <Button variant="ghost">
-              <Text>Star the Repo</Text>
-              <Icon as={StarIcon} />
+          <Link href="/counter" asChild>
+            <Button variant="ghost" size="sm">
+              <Text>Counter Page</Text>
+              <Icon as={ArrowRightIcon} />
             </Button>
           </Link>
         </View>

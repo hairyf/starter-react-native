@@ -14,19 +14,25 @@
     "prepare": "simple-git-hooks",
     "postinstall": "pnpx skills experimental_install",
     "lint": "eslint .",
-    "clean": "rm -rf .expo node_modules"
+    "clean": "rm -rf .expo node_modules",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
   },
   "dependencies": {
     "@hairy/react-lib": "^1.47.0",
     "@hairy/utils": "^1.47.0",
     "@tanstack/react-query": "^5.90.21",
+    "expo": "~54.0.33",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-native": "0.81.5",
+    "react-native-mmkv": "^4.2.0",
+    "react-native-nitro-modules": "^0.35.0",
     "react-use": "^17.6.0",
     "reusables": "workspace:*",
+    "unstorage": "^1.17.4",
     "valtio": "^2.3.0",
-    "valtio-define": "^1.0.4"
+    "valtio-define": "^1.1.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^7.6.1",
