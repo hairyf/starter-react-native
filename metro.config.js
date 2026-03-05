@@ -8,5 +8,5 @@ module.exports = withUniwindConfig(config, {
   cssEntryFile: './reusables/theme.css',
   // (optional) path where we gonna auto-generate typings
   // defaults to project's root
-  dtsFile: './types/uniwind-types.d.ts',
+  dtsFile: './uniwind-types.d.ts',
 })
