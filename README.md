@@ -10,22 +10,26 @@ An opinionated React Native starter built with Expo 54 + Expo Router 6, Uniwind 
 - 📦 **Shared UI package**: `reusables` workspace with shadcn‑style components
 - 🔄 **Data fetching** ready with `@tanstack/react-query`
 - 🗂️ **State management** ready with `valtio` + `valtio-define`
+- 🧮 **Local database**: SQLite + Kysely with typed models and SQL migrations
+- 💾 **Persistent storage**: Unstorage + MMKV driver for fast key–value storage
 - ✅ **TypeScript strict** + `@antfu/eslint-config`
 - 🧩 **Theming** and navigation integrated via `NAV_THEME` and a `ThemeToggle` header action
 - 📱 Runs on **iOS, Android, and Web**
 
 ## Tech Stack
 
-| Area               | Solution                             |
-| ------------------ | ------------------------------------ |
-| App framework      | Expo, React Native                   |
-| Routing            | `expo-router`                        |
-| Styling            | `uniwind`, `tailwindcss` v4          |
-| UI components      | React Native Reusables (`reusables`) |
-| Data fetching      | `@tanstack/react-query`              |
-| State management   | `valtio`, `valtio-define`            |
-| Code quality       | TypeScript, ESLint                   |
-| Package management | pnpm workspace (`reusables`)         |
+| Area               | Solution                                             |
+| ------------------ | ---------------------------------------------------- |
+| App framework      | Expo, React Native                                   |
+| Routing            | `expo-router`                                        |
+| Styling            | `uniwind`, `tailwindcss` v4                          |
+| UI components      | React Native Reusables (`reusables`)                 |
+| Data fetching      | `@tanstack/react-query`                              |
+| State management   | `valtio`, `valtio-define`                            |
+| Database           | SQLite (`expo-sqlite`) + Kysely with migrations      |
+| Persistent storage | Unstorage + MMKV (`react-native-mmkv`) custom driver |
+| Code quality       | TypeScript, ESLint                                   |
+| Package management | pnpm workspace (`reusables`)                         |
 
 ## Project Structure
 
@@ -34,9 +38,13 @@ An opinionated React Native starter built with Expo 54 + Expo Router 6, Uniwind 
 ├─ src/
 │  ├─ app/                 # Expo Router routes (+html, _layout, index)
 │  ├─ layout/              # Shared layout + ThemeToggle
-│  └─ components/          # App-level components (e.g. icons)
+│  ├─ components/          # App-level components (e.g. icons)
+│  ├─ config/              # App configuration (storage, themes, etc.)
+│  └─ database/            # Kysely config, models, and SQL migrations
+├─ prisma/                 # Prisma schema and generated artifacts (for Kysely)
 ├─ reusables/              # Shared UI library (buttons, text, icons, theme)
 ├─ types/                  # Generated Uniwind type definitions
+├─ scripts/                # Utility scripts (e.g. database migrations runner)
 ├─ app.config.ts           # Expo app config (new architecture + edge-to-edge)
 ├─ metro.config.js         # Metro config with Uniwind integration
 ├─ tailwind.config.js      # Tailwind / NativeWind content config
