@@ -15,7 +15,7 @@
     "prepare": "simple-git-hooks",
     "postinstall": "pnpx skills experimental_install",
     "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev && tsx scripts/migrations.ts",
+    "prisma:migrate": "prisma mvigrate dev && tsx scripts/migrations.ts",
     "lint": "eslint .",
     "clean": "rm -rf .expo node_modules",
     "android": "expo run:android",
@@ -24,6 +24,7 @@
   "dependencies": {
     "@hairy/react-lib": "catalog:frontend",
     "@hairy/utils": "catalog:frontend",
+    "@react-native-async-storage/async-storage": "catalog:native",
     "@tanstack/react-query": "catalog:frontend",
     "expo": "catalog:expo",
     "expo-sqlite": "catalog:expo",
@@ -34,7 +35,6 @@
     "react": "catalog:frontend",
     "react-dom": "catalog:frontend",
     "react-native": "catalog:native",
-    "react-native-mmkv": "catalog:native",
     "react-native-nitro-modules": "catalog:native",
     "react-use": "catalog:frontend",
     "reusables": "workspace:*",
@@ -77,7 +77,9 @@
   },
   "pnpm": {
     "patchedDependencies": {
-      "valtio@2.3.0": "patches/valtio@2.3.0.patch"
+      "nano-css@5.6.2": "patches/nano-css@5.6.2.patch",
+      "valtio@2.3.0": "patches/valtio@2.3.0.patch",
+      "react-use@17.6.0": "patches/react-use@17.6.0.patch"
     }
   },
   "simple-git-hooks": {

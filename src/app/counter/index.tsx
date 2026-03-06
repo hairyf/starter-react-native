@@ -6,6 +6,7 @@ import { store } from '@/store'
 
 function Page() {
   const { count, doubleCount } = useStore(store.counter)
+
   return (
     <layouts.default title="Counter" back>
       <View className="flex-1 items-center justify-center gap-4 p-4">

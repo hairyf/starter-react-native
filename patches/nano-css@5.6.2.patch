@@ -1,0 +1,12 @@
+diff --git a/index.js b/index.js
+--- a/index.js
++++ b/index.js
+@@ -13,7 +13,7 @@ var hash = function (str) {
+ exports.create = function (config) {
+     config = config || {};
+     var assign = config.assign || Object.assign;
+-    var client = typeof window === 'object';
++    var client = typeof window === 'object' && typeof document === 'object';
+ 
+     // Check if we are really in browser environment.
+     if (process.env.NODE_ENV !== 'production') {

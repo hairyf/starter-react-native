@@ -1,0 +1,19 @@
+diff --git a/lib/useLocation.js b/lib/useLocation.js
+index 613294ab40c4aa374764a0d09ec43ec40fc98a5c..fe1f5b8050a9e47aa20d43f4e301a9c77d36278a 100644
+--- a/lib/useLocation.js
++++ b/lib/useLocation.js
+@@ -13,7 +13,7 @@ var patchHistoryMethod = function (method) {
+         return result;
+     };
+ };
+-if (util_1.isBrowser) {
++if (util_1.isBrowser && typeof window.history !== 'undefined') {
+     patchHistoryMethod('pushState');
+     patchHistoryMethod('replaceState');
+ }
+@@ -57,4 +57,4 @@ var useLocationBrowser = function () {
+     return state;
+ };
+ var hasEventConstructor = typeof Event === 'function';
+-exports.default = util_1.isBrowser && hasEventConstructor ? useLocationBrowser : useLocationServer;
++exports.default = util_1.isBrowser && hasEventConstructor && typeof window.history !== 'undefined' && typeof window.location !== 'undefined' ? useLocationBrowser : useLocationServer;

@@ -1,36 +1,28 @@
-import type { Configuration } from 'react-native-mmkv'
-import { createMMKV } from 'react-native-mmkv'
+import { createAsyncStorage } from '@react-native-async-storage/async-storage'
 import { defineDriver } from 'unstorage'
 
-export const mmkvStorageDriver = defineDriver<Configuration, never>((options) => {
-  const mmkv = createMMKV(options)
+export const asyncStorageDriver = defineDriver<{ id: string }, never>((options) => {
+  const storage = createAsyncStorage(options.id)
   return {
-    name: 'mmkv-storage',
+    name: 'async-storage',
     options,
     async hasItem(key) {
-      return mmkv.contains(key)
+      return !!(await storage.getItem(key))
     },
     async getItem(key) {
-      const value = mmkv.getString(key)
-      return value
+      return storage.getItem(key)
     },
     async setItem(key, value) {
-      mmkv.set(key, value)
+      return storage.setItem(key, value)
     },
     async removeItem(key) {
-      mmkv.remove(key)
+      return storage.removeItem(key)
     },
     async getKeys() {
-      return mmkv.getAllKeys()
+      return storage.getAllKeys()
     },
     async clear() {
-      mmkv.clearAll()
-    },
-    async watch(callback) {
-      const unsub = mmkv.addOnValueChangedListener((key) => {
-        callback('update', key)
-      })
-      return () => unsub.remove()
+      return storage.clear()
     },
   }
 })

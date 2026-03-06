@@ -46,6 +46,9 @@ catalogs:
     simple-git-hooks:
       specifier: ^2.13.1
       version: 2.13.1
+    tsx:
+      specifier: ^4.21.0
+      version: 4.21.0
   dev:
     typescript:
       specifier: ~5.9.2
@@ -113,6 +116,9 @@ catalogs:
       specifier: 1.1.2
       version: 1.1.2
   native:
+    '@react-native-async-storage/async-storage':
+      specifier: ^3.0.1
+      version: 3.0.1
     react-native:
       specifier: 0.81.5
       version: 0.81.5
@@ -122,9 +128,6 @@ catalogs:
     react-native-keyboard-controller:
       specifier: 1.18.5
       version: 1.18.5
-    react-native-mmkv:
-      specifier: 4.2.0
-      version: 4.2.0
     react-native-nitro-modules:
       specifier: 0.35.0
       version: 0.35.0
@@ -187,6 +190,12 @@ catalogs:
       version: 19.1.17
 
 patchedDependencies:
+  nano-css@5.6.2:
+    hash: ec8e71d8d6b8b2d8d1708f4cafe180407768936f8ef16f26d2b1abf6cc96611d
+    path: patches/nano-css@5.6.2.patch
+  react-use@17.6.0:
+    hash: 6308691c6ef3717a1187176eba60cbb047a6713294ab4654b5b0cb77b1efabb6
+    path: patches/react-use@17.6.0.patch
   valtio@2.3.0:
     hash: 3addfeb307d70a96785d5ec5ddf74a826c5562768550518676c9f4136398a93d
     path: patches/valtio@2.3.0.patch
@@ -201,6 +210,9 @@ importers:
       '@hairy/utils':
         specifier: catalog:frontend
         version: 1.47.0
+      '@react-native-async-storage/async-storage':
+        specifier: catalog:native
+        version: 3.0.1(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
       '@tanstack/react-query':
         specifier: catalog:frontend
         version: 5.90.21(react@19.1.0)
@@ -231,15 +243,12 @@ importers:
       react-native:
         specifier: catalog:native
         version: 0.81.5(@babel/core@7.29.0)(@types/react@19.1.17)(react@19.1.0)
-      react-native-mmkv:
-        specifier: catalog:native
-        version: 4.2.0(react-native-nitro-modules@0.35.0(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
       react-native-nitro-modules:
         specifier: catalog:native
         version: 0.35.0(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
       react-use:
         specifier: catalog:frontend
-        version: 17.6.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 17.6.0(patch_hash=6308691c6ef3717a1187176eba60cbb047a6713294ab4654b5b0cb77b1efabb6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       reusables:
         specifier: workspace:*
         version: link:reusables
@@ -338,7 +347,7 @@ importers:
         specifier: catalog:build
         version: 4.2.1
       tsx:
-        specifier: ^4.21.0
+        specifier: catalog:cli
         version: 4.21.0
       typescript:
         specifier: catalog:dev
@@ -2335,6 +2344,12 @@ packages:
 
   '@radix-ui/rect@1.1.1':
     resolution: {integrity: sha512-HPwpGIzkl28mWyZqG52jiqDJ12waP11Pa1lGoiyUkIEuMLBP0oeK/C89esbXrxsky5we7dfd8U58nm0SgAWpVw==}
+
+  '@react-native-async-storage/async-storage@3.0.1':
+    resolution: {integrity: sha512-VHwHb19sMg4Xh3W5M6YmJ/HSm1uh8RYFa6Dozm9o/jVYTYUgz2BmDXqXF7sum3glQaR34/hlwVc94px1sSdC2A==}
+    peerDependencies:
+      react: '*'
+      react-native: '*'
 
   '@react-native/assets-registry@0.81.5':
     resolution: {integrity: sha512-705B6x/5Kxm1RKRvSv0ADYWm5JOnoiQ1ufW7h8uu2E6G9Of/eE6hP/Ivw3U5jI16ERqZxiKQwk34VJbB0niX9w==}
@@ -4495,6 +4510,9 @@ packages:
     resolution: {integrity: sha512-im9DjEDQ55s9fL4EYzOAv0yMqmMBSZp6G0VvFyTMPKWxiSBHUj9NW/qqLmXUwXrrM7AvqSlTCfvqRb0cM8yYqw==}
     engines: {node: '>=0.10.0'}
 
+  idb@8.0.3:
+    resolution: {integrity: sha512-LtwtVyVYO5BqRvcsKuB2iUMnHwPVByPCXFXOpuU96IZPPoPN6xjOGxZQ74pgSVVLQWtUOYgyeL4GE98BY5D3wg==}
+
   ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
 
@@ -5791,13 +5809,6 @@ packages:
       react: '*'
       react-native: '*'
       react-native-reanimated: '>=3.0.0'
-
-  react-native-mmkv@4.2.0:
-    resolution: {integrity: sha512-LB1GeqkSJtu33li0nzgvo4W2RbsGfObXgQG2LBmbxfQP3sX+Q13OANoeKnJ1vwU8v4xNn4jWrA4vl3GuOt1/Rw==}
-    peerDependencies:
-      react: '*'
-      react-native: '*'
-      react-native-nitro-modules: '*'
 
   react-native-nitro-modules@0.35.0:
     resolution: {integrity: sha512-Eho1yEcLbsteGpBFn2XZOp5FIptnEciWzuYBW49S0jo41Un2LeyesIO/MqYLY/c5o7D9Fw9th4pxGtV7OAb0+g==}
@@ -8952,6 +8963,12 @@ snapshots:
 
   '@radix-ui/rect@1.1.1': {}
 
+  '@react-native-async-storage/async-storage@3.0.1(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)':
+    dependencies:
+      idb: 8.0.3
+      react: 19.1.0
+      react-native: 0.81.5(@babel/core@7.29.0)(@types/react@19.1.17)(react@19.1.0)
+
   '@react-native/assets-registry@0.81.5': {}
 
   '@react-native/babel-plugin-codegen@0.81.5(@babel/core@7.29.0)':
@@ -11460,6 +11477,8 @@ snapshots:
     dependencies:
       safer-buffer: 2.1.2
 
+  idb@8.0.3: {}
+
   ieee754@1.2.1: {}
 
   ignore@5.3.2: {}
@@ -12686,7 +12705,7 @@ snapshots:
     dependencies:
       lru.min: 1.1.4
 
-  nano-css@5.6.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  nano-css@5.6.2(patch_hash=ec8e71d8d6b8b2d8d1708f4cafe180407768936f8ef16f26d2b1abf6cc96611d)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
       css-tree: 1.1.3
@@ -13115,12 +13134,6 @@ snapshots:
       react-native-is-edge-to-edge: 1.3.1(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
       react-native-reanimated: 4.1.6(@babel/core@7.29.0)(react-native-worklets@0.5.1(@babel/core@7.29.0)(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
 
-  react-native-mmkv@4.2.0(react-native-nitro-modules@0.35.0(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0):
-    dependencies:
-      react: 19.1.0
-      react-native: 0.81.5(@babel/core@7.29.0)(@types/react@19.1.17)(react@19.1.0)
-      react-native-nitro-modules: 0.35.0(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0)
-
   react-native-nitro-modules@0.35.0(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.1.17)(react@19.1.0))(react@19.1.0):
     dependencies:
       react: 19.1.0
@@ -13271,7 +13284,7 @@ snapshots:
       react: 19.1.0
       tslib: 2.8.1
 
-  react-use@17.6.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  react-use@17.6.0(patch_hash=6308691c6ef3717a1187176eba60cbb047a6713294ab4654b5b0cb77b1efabb6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       '@types/js-cookie': 2.2.7
       '@xobotyi/scrollbar-width': 1.9.5
@@ -13279,7 +13292,7 @@ snapshots:
       fast-deep-equal: 3.1.3
       fast-shallow-equal: 1.0.0
       js-cookie: 2.2.1
-      nano-css: 5.6.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      nano-css: 5.6.2(patch_hash=ec8e71d8d6b8b2d8d1708f4cafe180407768936f8ef16f26d2b1abf6cc96611d)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
       react-universal-interface: 0.6.2(react@19.1.0)(tslib@2.8.1)
